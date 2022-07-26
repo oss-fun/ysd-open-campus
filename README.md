@@ -1,4 +1,9 @@
-# K8s multi node cluster
+# K8s multi node cluster with wasm support
+
+Container Runtime is following:
+
+- High-Level: containerd
+- Low-Level: crun with WasmEdge support
 
 # Usage
 
@@ -29,6 +34,4 @@ You can see the output by executing `kubectl logs wasm_sample_app`.
 ## Production environment
 
 Coming soon
-
----
 
