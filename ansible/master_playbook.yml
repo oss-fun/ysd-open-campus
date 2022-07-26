@@ -1,0 +1,6 @@
+---
+- hosts: master
+  become: true
+  tasks:
+    - include_tasks: tasks/common.yml
+    - include_tasks: tasks/master.yml

@@ -1,0 +1,14 @@
+[Master]
+master ansible_host=192.168.50.10
+
+[Worker]
+worker-1 ansible_host=192.168.50.11
+worker-2 ansible_host=192.168.50.12
+
+[Cluster:children]
+Master
+Worker
+
+[Cluster:vars]
+ansible_ssh_user=vagrant
+ansible_ssh_key_files=~/.vagrant.d/insecure_private_key
