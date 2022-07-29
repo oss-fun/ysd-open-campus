@@ -1,6 +1,8 @@
 ---
 - hosts: Worker
   become: true
+  vars_files:
+    - vars/vars.yml
   tasks:
     - include_tasks: tasks/common.yml
     - include_tasks: tasks/worker.yml

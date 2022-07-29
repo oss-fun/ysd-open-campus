@@ -3,7 +3,7 @@
 Container Runtime is following:
 
 - High-Level: containerd
-- Low-Level: crun with WasmEdge support
+- Low-Level: crun with WasmEdge Support
 
 # Usage
 

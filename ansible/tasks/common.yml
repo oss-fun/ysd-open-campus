@@ -47,9 +47,9 @@
     update_cache: yes
   vars:
     packages:
-      - kubelet=1.23.0-00
-      - kubeadm=1.23.0-00
-      - kubectl=1.23.0-00
+      - kubelet={{ k8s_version }}-00
+      - kubeadm={{ k8s_version }}-00
+      - kubectl={{ k8s_version }}-00
 
 - name: Configure containerd
   blockinfile:
@@ -75,11 +75,7 @@
 - name: Persist changes
   command: sysctl -p
 
-- name: Get IP eth1 addr
-  shell: ifconfig eth1 | grep 'inet' | cut -d{{':'}} -f2 | awk '{ print $2 }'
-  register: output
-
 - name: Configure kubelet
   lineinfile:
     path: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-    line: Environment="KUBELET_EXTRA_ARGS=--node-ip={{ output.stdout }}"
+    line: Environment="KUBELET_EXTRA_ARGS=--node-ip={{ ansible_host }}"
