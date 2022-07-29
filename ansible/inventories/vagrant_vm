@@ -10,5 +10,5 @@ Master
 Worker
 
 [Cluster:vars]
-ansible_ssh_user=vagrant
+ansible_user=vagrant
 ansible_ssh_key_files=~/.vagrant.d/insecure_private_key
