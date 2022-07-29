@@ -1,4 +1,4 @@
-IMAGE_NAME = "generic/ubuntu2004"
+IMAGE_NAME = "alvistack/ubuntu-22.04"
 N = 2
 
 Vagrant.configure("2") do |config|
@@ -24,4 +24,9 @@ Vagrant.configure("2") do |config|
             worker.vm.hostname = "worker-#{i}"
         end
     end
+
+	config.vm.provision "apt update and upgrade", type: "shell", inline: <<-SHELL
+		sudo apt update -y
+		sudo apt upgrade -y
+	SHELL
 end
