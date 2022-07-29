@@ -4,8 +4,8 @@ metadata:
   annotations:
     module.wasm.image/variant: compat
   labels:
-    run: wasm_sample_app
-  name: wasm_sample_app
+    run: wasm-sample-app
+  name: wasm-sample-app
 spec:
   containers:
   - args:
@@ -13,6 +13,6 @@ spec:
     - "50000000"
     image: hydai/wasm-wasi-example:with-wasm-annotation
     imagePullPolicy: IfNotPresent
-    name: wasm_sample_app 
+    name: wasm-sample-app
   hostNetwork: true
   restartPolicy: Never

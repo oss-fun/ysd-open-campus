@@ -27,9 +27,9 @@ When successfully completed, `join-command` is created in `ansible` but you can 
 ### Run wasm sample app
 
 1. `vagrant ssh master`
-2. `kubectl create -f /vm_share/wasm_sample_app.yml`
+2. `kubectl create -f /vm_share/wasm-sample-app.yml`
 
-You can see the output by executing `kubectl logs wasm_sample_app`.
+You can see the output by executing `kubectl logs wasm-sample-app`.
 
 ## Production environment
 
