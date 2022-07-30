@@ -4,7 +4,7 @@
     kubeadm init
     --apiserver-advertise-address="{{ ansible_host }}"
     --apiserver-cert-extra-sans="{{ ansible_host }}"
-    --pod-network-cidr=172.16.0.0/16
+    --pod-network-cidr={{ pod_network_cidr }}
     --cri-socket=/var/run/containerd/containerd.sock
 
 - name: Create kube directory
@@ -23,7 +23,7 @@
 
 - name: Download calico.conf
   get_url:
-    url: https://docs.projectcalico.org/v3.20/manifests/calico.yaml
+    url: https://projectcalico.docs.tigera.io/manifests/calico.yaml
     dest: /home/{{ ansible_user }}/calico.yaml
 
 - name: Add pod config to calico.yaml
@@ -36,7 +36,7 @@
   lineinfile:
     dest: /home/{{ ansible_user }}/calico.yaml
     regexp: '^\s{12}#\s*  value: "192.168.0.0\/16".*$'
-    line: '              value: "172.16.0.0/16"'
+    line: '              value: "{{ pod_network_cidr }}"'
 
 - name: Install calico CNI
   become: false
