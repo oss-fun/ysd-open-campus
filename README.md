@@ -36,7 +36,7 @@ You can see the output by executing `kubectl logs wasm-sample-app`.
 
 ### Note
 
-When `vagrant up`, an error about IP range may be occurred like this:
+When you run `vagrant up`, an error about IP range may occur like this:
 
 ```
 The IP address configured for the host-only network is not within the
