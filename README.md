@@ -34,6 +34,27 @@ When successfully completed, `join-command` is created in `ansible`.
 
 You can see the output by executing `kubectl logs wasm-sample-app`.
 
+### Note
+
+When `vagrant up`, an error about IP range may be occured like this:
+
+```
+The IP address configured for the host-only network is not within the
+allowed ranges. Please update the address used to be within the allowed
+ranges and run the command again.
+
+  Address: 192.168.50.10
+  Ranges: 192.168.56.0/21
+
+Valid ranges can be modified in the /etc/vbox/networks.conf file. For
+more information including valid format see:
+
+  https://www.virtualbox.org/manual/ch06.html#network_hostonly
+```
+You can solve this by adding following line in `/etc/vbox/networks.conf` (you need to create this file if it doesn't exist):
+
+`* 0.0.0.0/0 ::/0`
+
 ## Production environment
 
 Before building the cluster, you need to install Ansible.
