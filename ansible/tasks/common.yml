@@ -14,7 +14,7 @@
     - net-tools
 
 - name: Install containerd, WasmEdge and crun
-  shell: wget -qO- https://raw.githubusercontent.com/second-state/wasmedge-containers-examples/main/containerd/install.sh | sudo bash
+  shell: sudo bash ../../scripts/install_cr.sh
 
 - name: Remove swapfile from /etc/fstab
   mount:
