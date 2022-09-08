@@ -5,7 +5,6 @@
     --apiserver-advertise-address="{{ ansible_host }}"
     --apiserver-cert-extra-sans="{{ ansible_host }}"
     --pod-network-cidr={{ pod_network_cidr }}
-    --cri-socket=/var/run/containerd/containerd.sock
 
 - name: Create kube directory
   file:

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export WASMEDGE_VERSION="0.10.0"
-export CRUN_VERSION="1.5"
+export CRUN_VERSION=""
 export ZH="FALSE"
 
 for opt in "$@"; do
