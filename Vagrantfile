@@ -25,6 +25,10 @@ Vagrant.configure("2") do |config|
         end
     end
 
+    if Vagrant.has_plugin?("vagrant-timezone")
+      config.timezone.value = "Asia/Tokyo"
+    end
+
 	config.vm.provision "apt update and upgrade", type: "shell", inline: <<-SHELL
 		sudo apt update -y
 		sudo apt upgrade -y
