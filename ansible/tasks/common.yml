@@ -1,4 +1,13 @@
 ---
+- name: Set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+
+- name: Modify /etc/hosts
+  template:
+    src=../templates/hosts.j2
+    dest=/etc/hosts
+
 - name: Install necessary packages
   apt:
     name: "{{ packages }}"
@@ -14,7 +23,9 @@
     - net-tools
 
 - name: Install containerd, WasmEdge and crun
-  shell: wget -qO- https://raw.githubusercontent.com/second-state/wasmedge-containers-examples/main/containerd/install.sh | bash
+  script: ../scripts/install_cr.sh
+  args:
+    creates: /etc/containerd/config.toml
 
 - name: Remove swapfile from /etc/fstab
   mount:
@@ -59,6 +70,16 @@
       overlay
       br_netfilter
 
+- name: Configure containerd
+  shell: |
+    sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+
+- name: Restart containerd
+  service:
+    name: containerd
+    state: restarted
+    enabled: yes
+
 - name: Enable kernel modules
   shell: |
     modprobe overlay
@@ -69,6 +90,7 @@
     create: true
     path: /etc/sysctl.conf
     block: |
+      net.bridge.bridge-nf-call-ip6tables = 1
       net.bridge.bridge-nf-call-iptables = 1
       net.ipv4.ip_forward = 1
 
