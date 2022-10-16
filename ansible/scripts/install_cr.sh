@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export WASMEDGE_VERSION="0.10.0"
+export WASMEDGE_VERSION=""
 export CRUN_VERSION=""
 export ZH="FALSE"
 
